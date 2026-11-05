@@ -12,6 +12,10 @@ def test_view_query():
     out = query.prettify(d, Metadata(http_message=req))
     assert out == "foo:\n- bar\n- baz\n"
 
+    req.query = [("foo", ""), ("foo", "bar")]
+    out = query.prettify(d, Metadata(http_message=req))
+    assert out == "foo:\n- ''\n- bar\n"
+
     with pytest.raises(ValueError):
         query.prettify(d, Metadata())
 

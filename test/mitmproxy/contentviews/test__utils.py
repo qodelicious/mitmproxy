@@ -107,6 +107,8 @@ def test_merge_repeated_keys():
             ("bar", "quux"),
         ]
     ) == {"foo": ["bar", "baz", "qux"], "bar": "quux"}
+    assert merge_repeated_keys([("foo", ""), ("foo", "bar")]) == {"foo": ["", "bar"]}
+    assert merge_repeated_keys([("foo", ""), ("foo", "")]) == {"foo": ["", ""]}
 
 
 def test_byte_pairs_to_str_pairs():

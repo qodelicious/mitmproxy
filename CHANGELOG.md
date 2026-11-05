@@ -13,6 +13,8 @@
 - Fix filter expressions where a filter without an argument is followed by a closing bracket,
   e.g. `!(~s)` or `(~q & ~s)`, which were rejected as invalid.
   ([#8537](https://github.com/mitmproxy/mitmproxy/pull/8537), @qodelicious)
+- Fix the query, URL-encoded and multipart contentviews dropping a repeated key's first value
+  when that value is empty, e.g. `?a=&a=1` was shown as just `a: '1'`.
 
 ## 25 October 2026: mitmproxy 12.3.1
 

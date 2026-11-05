@@ -89,7 +89,8 @@ def merge_repeated_keys(items: Iterable[tuple[str, str]]) -> dict[str, str | lis
     """
     ret: dict[str, str | list[str]] = {}
     for key, value in items:
-        if existing := ret.get(key):
+        if key in ret:
+            existing = ret[key]
             if isinstance(existing, list):
                 existing.append(value)
             else:
